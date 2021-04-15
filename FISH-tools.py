@@ -214,7 +214,8 @@ def extract_file(destination, start, size):
 def unpack(dir):
     #takes each tone from tone_info and extracts it
     for tone in tone_info:
-        destination = f"{dir}/{header.vac_file_source_str}/{tone.name} ({str(tone.sample_rate)} Hz).adpcm"
+        vac_stripped = header.vac_file_source_str.replace(".vac","")
+        destination = f"{dir}/{vac_stripped}/{tone.name} ({str(tone.sample_rate)} Hz).adpcm"
         start = tone.tone_data_absolute_offset
         size = tone.tone_data_size
         print(f"Extracting {destination} ...")
