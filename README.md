@@ -1,6 +1,10 @@
 # fish-tools
 unpacking script for the Melbourne House "FISH" Tone Library file format used in Test Drive Unlimited
 
+usage: >python3 FISH-tools.py [dir] 
+
+where [dir] contains .tla files to unpack. [dir] is recursivley searched for sub-[dir]s containing .tla (i.e. sound/us/folder/file.tla)
+
 Project: FISH-tools.py
 Author: Chris Torrella
 Date: April 15, 2021
