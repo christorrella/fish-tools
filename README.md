@@ -34,7 +34,9 @@ had the .tlb and .vac files left on the dic on accident (these are not visible
 on the PS2 archive versions, and as is on the PSP disc, they take up vital space).
 
 Total time required to figure out the relationship between .tla, tlb and .vac files: ~12 hours
+
 Total time required to figure out offsets and meanings of integers/offsets in .tla: ~12 hours
+
 Total time required to write FISH-tools.py: ~24 hours
 
 Total time required to understand MHPF .pck format: ~1 year (lots of time off in-between looking)
