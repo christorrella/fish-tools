@@ -1,0 +1,43 @@
+FISH~ToneLibrary file format
+Decoded by Chris Torrella @tesrella, April 13 2021
+
+file used in this example:
+  - TDUPSP.PCK\euro\bnk\frontend\sounds\frontend.tla (combination of frontend.tlb and frontend.vac)
+notes about .tla .tlb .vac:
+  - .tlb contain an easy-to-read database describing the contents of the matching .vac file
+  - .vac contain the audio datastream described by the matching .tlb file
+  - .tla contain all of the data from .tla and .tlb in one package, which is what the following writeup describes
+pastebin notes:
+  - pastebin screws up the horizontal scrolling of this writeup, so use a non-wrapping text viewer to understand
+
+Decoded file:
+
+18 bytes: magic "FISH~ToneLibrary" followed by two null bytes,
+                                                      4 bytes: size of info-table and data-table combined, relative from the start of this number
+                                                                  4 bytes: version(?) off by 1,
+                                                                              4 bytes: Number of entries,
+                                                                                          4 bytes, len(vac-file-source),
+                                                                                                      vac-file-source,
+                                                                                                                                          1 byte: unknown,
+                                                                                                                                             12 bytes: "~SoundData" followed by two null bytes,
+                                                                                                                                                                                 4 bytes: offset of info-table, relative to beginning of this number,
+                                                                                                                                                                                             4 bytes: length of data-table,
+                                                                                                                                                                                                         4 bytes: size of following padding before first table
+
+46 49 53 48 7E 54 6F 6E 65 4C 69 62 72 61 72 79 00 00 B5 30 02 00 05 00 00 00 1C 00 00 00 0C 00 00 00 66 72 6F 6E 74 65 6E 64 2E 76 61 63 01 7E 53 6F 75 6E 64 44 61 74 61 00 00 E5 2B 02 00 A0 2B 02 00 39 00 00 00
+
+
+
+7 bytes: tone start,
+                     4 bytes: length of this tone info-table entry (inclusive from beginning of number),
+                                 4 bytes: version,
+                                             4 bytes: len(tone-name),
+                                                         tone-name,
+                                                                                                4 bytes: offset of data in table (+ offset of end of header),
+                                                                                                            4 bytes: sample rate,
+                                                                                                                        1 byte: loop true/false,
+                                                                                                                           4 bytes: root-note(?)
+
+7E 54 6F 6E 65 00 00 26 00 00 00 02 00 00 00 0D 00 00 00 50 6F 6C 69 63 65 5F 73 74 61 74 75 73 00 00 00 00 22 56 00 00 00 3C 00 00 00
+
+...etc...
